@@ -22,6 +22,17 @@ namespace JustinTownleyMobile
         public DateTime PAStart { get; set; }
         public DateTime PAEnd { get; set; }
 
+        //default constructor for adding new Course
+        public Course()
+        {
+            CourseStart = DateTime.Now;
+            CourseEnd = DateTime.Now.AddDays(1);
+            CourseStatus = 4; // 4 = plan to take
+            OAStart = DateTime.Now;
+            OAEnd = DateTime.Now.AddDays(1);
+            PAStart = DateTime.Now;
+            PAEnd = DateTime.Now.AddDays(1);
+        }
         //constructor for current course
         public Course(int ID, string courseName, DateTime courseStart, DateTime courseEnd, int status, 
             string ciName, string ciPhone, string ciEmail, string notes, string oaName, DateTime oaStart, 
