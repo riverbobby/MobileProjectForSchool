@@ -11,6 +11,12 @@ namespace JustinTownleyMobile
         public DateTime TermStart { get; set; }
         public DateTime TermEnd { get; set; }
 
+        //default constructor for new term to be edited
+        public Term()
+        {
+            TermStart = DateTime.Now;
+            TermEnd = DateTime.Now.AddDays(1);
+        }
         //constructor for current term
         public Term(int ID, string name, DateTime start, DateTime end)
         {

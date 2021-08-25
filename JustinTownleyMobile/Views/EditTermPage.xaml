@@ -4,9 +4,11 @@
              x:Class="JustinTownleyMobile.Views.EditTermPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Editor Placeholder="Enter a name" 
+                    Text="{Binding TermName}" 
+                    HeightRequest="100" />
+            <DatePicker Date="{Binding TermStart}"/>
+            <DatePicker Date="{Binding TermEnd}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

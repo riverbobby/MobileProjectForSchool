@@ -15,6 +15,15 @@ namespace JustinTownleyMobile.Views
         public EditTermPage()
         {
             InitializeComponent();
+
+            if (Globals.CurrentTermID < 0)
+            {
+                BindingContext = Globals.CurrentTerm;
+            }
+            else
+            {
+                BindingContext = new Term();
+            }
         }
     }
 }
