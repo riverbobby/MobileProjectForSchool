@@ -9,6 +9,8 @@ namespace JustinTownleyMobile
     {
         [PrimaryKey, AutoIncrement]
         public int CourseID { get; set; }
+        [Indexed]
+        public int TermID { get; set; }
         public string CourseName { get; set; }
         public DateTime CourseStart { get; set; }
         public DateTime CourseEnd { get; set; }
@@ -27,6 +29,7 @@ namespace JustinTownleyMobile
         //default constructor for adding new Course
         public Course()
         {
+            TermID = Services.DatabaseService.CurrentTermID;
             CourseStart = DateTime.Now;
             CourseEnd = DateTime.Now.AddDays(1);
             CourseStatus = 4; // 4 = plan to take
@@ -36,26 +39,26 @@ namespace JustinTownleyMobile
             PAEnd = DateTime.Now.AddDays(1);
         }
         //constructor for current course
-        public Course(int ID, string courseName, DateTime courseStart, DateTime courseEnd, int status, 
-            string ciName, string ciPhone, string ciEmail, string notes, string oaName, DateTime oaStart, 
-            DateTime oaEnd, string paName, DateTime paStart, DateTime paEnd)
-        {
-            CourseID = ID;
-            CourseName = courseName;
-            CourseStart = courseStart;
-            CourseEnd = courseEnd;
-            CourseStatus = status;
-            CIName = ciName;
-            CIPhone = ciPhone;
-            CIEmail = ciEmail;
-            Notes = notes;
-            OAName = oaName;
-            OAStart = oaStart;
-            OAEnd = oaEnd;
-            PAName = paName;
-            PAStart = paStart;
-            PAEnd = paEnd;
+        //public Course(int ID, string courseName, DateTime courseStart, DateTime courseEnd, int status, 
+        //    string ciName, string ciPhone, string ciEmail, string notes, string oaName, DateTime oaStart, 
+        //    DateTime oaEnd, string paName, DateTime paStart, DateTime paEnd)
+        //{
+        //    CourseID = ID;
+        //    CourseName = courseName;
+        //    CourseStart = courseStart;
+        //    CourseEnd = courseEnd;
+        //    CourseStatus = status;
+        //    CIName = ciName;
+        //    CIPhone = ciPhone;
+        //    CIEmail = ciEmail;
+        //    Notes = notes;
+        //    OAName = oaName;
+        //    OAStart = oaStart;
+        //    OAEnd = oaEnd;
+        //    PAName = paName;
+        //    PAStart = paStart;
+        //    PAEnd = paEnd;
 
-        }
+        //}
     }
 }

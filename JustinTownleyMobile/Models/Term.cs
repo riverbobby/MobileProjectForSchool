@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
 namespace JustinTownleyMobile
 {
     class Term
     {
+        [PrimaryKey, AutoIncrement]
         public int TermID { get; set; }
         public string TermName { get; set; }
         public DateTime TermStart { get; set; }
@@ -18,12 +20,12 @@ namespace JustinTownleyMobile
             TermEnd = DateTime.Now.AddDays(1);
         }
         //constructor for current term
-        public Term(int ID, string name, DateTime start, DateTime end)
-        {
-            TermID = ID;
-            TermName = name;
-            TermStart = start;
-            TermEnd = end;
-        }
+        //public Term(int ID, string name, DateTime start, DateTime end)
+        //{
+        //    TermID = ID;
+        //    TermName = name;
+        //    TermStart = start;
+        //    TermEnd = end;
+        //}
     }
 }
