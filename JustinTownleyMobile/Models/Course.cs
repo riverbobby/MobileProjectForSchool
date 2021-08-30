@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
 namespace JustinTownleyMobile
 {
     class Course
     {
+        [PrimaryKey, AutoIncrement]
         public int CourseID { get; set; }
         public string CourseName { get; set; }
         public DateTime CourseStart { get; set; }
