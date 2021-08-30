@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using JustinTownleyMobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +16,7 @@ namespace JustinTownleyMobile.Views
         {
             InitializeComponent();
 
-            //BindingContext = new (viewmodel)
+            BindingContext = new EditAssessmentViewModel();
         }
     }
 }

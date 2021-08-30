@@ -5,7 +5,7 @@ using SQLite;
 
 namespace JustinTownleyMobile
 {
-    class Term
+    public class Term
     {
         [PrimaryKey, AutoIncrement]
         public int TermID { get; set; }

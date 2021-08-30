@@ -4,7 +4,8 @@ using System.Text;
 using SQLite;
 using System.IO;
 using System.Threading.Tasks;
-using System.Linq;
+using Xamarin.Essentials;
+using Xamarin.Essentials;
 
 namespace JustinTownleyMobile.Services
 {
@@ -99,8 +100,8 @@ namespace JustinTownleyMobile.Services
         public static async Task<List<Course>> GetCourses(int id)
         {
             await Init();
-            //add <where> linq (I don't like it yet)...
-            var courses = await db.Table<Course>().Where(a=> a.TermID.Equals(id)).ToListAsync();
+
+            var courses = await db.Table<Course>().Where(c=> c.TermID.Equals(id)).ToListAsync();
             return courses;
         }
         public static async Task AddTerm(DateTime termStart, DateTime termEnd)
@@ -112,7 +113,7 @@ namespace JustinTownleyMobile.Services
                 TermEnd = termEnd
             };
 
-            var id = await db.InsertAsync(term);
+            await db.InsertAsync(term);
         }
         public static async Task RemoveTerm(int id)
         {
@@ -123,6 +124,7 @@ namespace JustinTownleyMobile.Services
         public static async Task<Term> GetTerm(int id)
         {
             await Init();
+            
             var term = await db.GetAsync<Term>(id);
             return term;
         }
