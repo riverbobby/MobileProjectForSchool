@@ -18,27 +18,44 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\CoursePage.xaml">
+    <EmbeddedResource Update="Views\CourseView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditAssessmentPage.xaml">
+    <EmbeddedResource Update="Views\EditAssessmentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditCoursePage.xaml">
+    <EmbeddedResource Update="Views\EditCourseView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditTermPage.xaml">
+    <EmbeddedResource Update="Views\EditTermView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TermPage.xaml">
+    <EmbeddedResource Update="Views\TermView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TermsPage.xaml">
+    <EmbeddedResource Update="Views\TermsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Compile Update="Views\CourseView.xaml.cs">
+      <DependentUpon>CourseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditAssessmentView.xaml.cs">
+      <DependentUpon>EditAssessmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditCourseView.xaml.cs">
+      <DependentUpon>EditCourseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EditTermView.xaml.cs">
+      <DependentUpon>EditTermView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TermsView.xaml.cs">
+      <DependentUpon>TermsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TermView.xaml.cs">
+      <DependentUpon>TermView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -10,20 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace JustinTownleyMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditTermPage : ContentPage
+    public partial class EditTermView : ContentPage
     {
-        public EditTermPage()
+        public EditTermView()
         {
             InitializeComponent();
 
-            if (Globals.CurrentTermID < 0)
-            {
-                BindingContext = Globals.CurrentTerm;
-            }
-            else
-            {
-                BindingContext = new Term();
-            }
+            //BindingContext = new (viewmodel)
         }
     }
 }

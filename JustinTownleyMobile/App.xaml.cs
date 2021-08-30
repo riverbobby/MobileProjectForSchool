@@ -10,7 +10,7 @@ namespace JustinTownleyMobile
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Views.TermsPage());
+            MainPage = new NavigationPage(new Views.TermsView());
         }
 
         protected override void OnStart()

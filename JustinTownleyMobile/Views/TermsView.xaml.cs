@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace JustinTownleyMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditCoursePage : ContentPage
+    public partial class TermsView : ContentPage
     {
-        public EditCoursePage()
+        public TermsView()
         {
             InitializeComponent();
         }
