@@ -80,10 +80,14 @@ namespace JustinTownleyMobile.Services
                 PAName = paName,
                 PAStart = paStart,
                 PAEnd = paEnd
-        };
+            };
 
             await db.InsertAsync(course);
         }
+        public static async Task UpdateCourse(Course course)
+        {
+            await db.UpdateAsync(course);
+        } 
         public static async Task RemoveCourse(int id)
         {
             await Init();
@@ -115,11 +119,22 @@ namespace JustinTownleyMobile.Services
 
             await db.InsertAsync(term);
         }
+        public static async Task UpdateTerm(Term term)
+        {
+            await db.UpdateAsync(term);
+        }
+
         public static async Task RemoveTerm(int id)
         {
             await Init();
-            // need code to create cascading delete for foreign key
+       
             await db.DeleteAsync<Term>(id);
+            //performing cascade delete on foreign key
+            var courses = await db.Table<Course>().Where(c => c.TermID.Equals(id)).ToListAsync();
+            foreach (Course c in courses)
+            {
+                await db.DeleteAsync<Course>(c.CourseID);
+            }
         }
         public static async Task<Term> GetTerm(int id)
         {
