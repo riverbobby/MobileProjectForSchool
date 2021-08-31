@@ -15,19 +15,16 @@ namespace JustinTownleyMobile.ViewModels
 
         public EditAssessmentViewModel()
         {
-            if (DatabaseService.CurrentCourseID > 0)
-            {
-                Refresh();
-            }
-            else
-            {
-                Course = new Course();
-            }
+            Refresh();
         }
         async Task Refresh()
         {
             var course = await DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
             Course = course;
+        }
+        async Task Save()
+        {
+            await DatabaseService.UpdateCourse(Course);
         }
 
     }

@@ -58,29 +58,9 @@ namespace JustinTownleyMobile.Services
 
 
         }
-        public static async Task AddCourse(int termID, string courseName, DateTime courseStart, DateTime courseEnd, int status,
-            string ciName, string ciPhone, string ciEmail, string notes, string oaName, DateTime oaStart,
-            DateTime oaEnd, string paName, DateTime paStart, DateTime paEnd)
+        public static async Task AddCourse(Course course)
         {
             await Init();
-            var course = new Course
-            {
-                TermID = termID,
-                CourseName = courseName,
-                CourseStart = courseStart,
-                CourseEnd = courseEnd,
-                CourseStatus = status,
-                CIName = ciName,
-                CIPhone = ciPhone,
-                CIEmail = ciEmail,
-                Notes = notes,
-                OAName = oaName,
-                OAStart = oaStart,
-                OAEnd = oaEnd,
-                PAName = paName,
-                PAStart = paStart,
-                PAEnd = paEnd
-            };
 
             await db.InsertAsync(course);
         }
@@ -108,14 +88,9 @@ namespace JustinTownleyMobile.Services
             var courses = await db.Table<Course>().Where(c=> c.TermID.Equals(id)).ToListAsync();
             return courses;
         }
-        public static async Task AddTerm(DateTime termStart, DateTime termEnd)
+        public static async Task AddTerm(Term term)
         {
             await Init();
-            var term = new Term
-            {
-                TermStart = termStart,
-                TermEnd = termEnd
-            };
 
             await db.InsertAsync(term);
         }

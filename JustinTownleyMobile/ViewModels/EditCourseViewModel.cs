@@ -29,6 +29,16 @@ namespace JustinTownleyMobile.ViewModels
             var course = await DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
             Course = course;
         }
-
+        async Task Save()
+        {
+            if (DatabaseService.CurrentCourseID > 0)
+            {
+                await DatabaseService.UpdateCourse(Course);
+            }
+            else
+            {
+                await DatabaseService.AddCourse(Course);
+            }
+        }
     }
 }
