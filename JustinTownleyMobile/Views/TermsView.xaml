@@ -4,9 +4,15 @@
              x:Class="JustinTownleyMobile.Views.TermsView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="WGU" />
+                <Image Source="Images/logo.svg" />
+            </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

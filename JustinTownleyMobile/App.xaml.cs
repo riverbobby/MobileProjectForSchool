@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using JustinTownleyMobile.Views;
 
 namespace JustinTownleyMobile
 {
@@ -10,7 +11,7 @@ namespace JustinTownleyMobile
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Views.TermsView());
+            MainPage = new NavigationPage(new TermsView());
         }
 
         protected override void OnStart()
