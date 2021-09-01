@@ -2,11 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JustinTownleyMobile.Views.TermsView">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Terms" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="WGU" />
-                <Image Source="Images/logo.svg" />
+                <BoxView Color="#003057" />
+                       
             </StackLayout>
             <ScrollView>
                 <StackLayout>

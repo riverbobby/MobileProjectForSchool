@@ -11,7 +11,7 @@ namespace JustinTownleyMobile
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new TermsView());
+            MainPage = new NavigationPage(new TermsView()) { BarBackgroundColor = Color.FromHex("#003057") };
         }
 
         protected override void OnStart()
