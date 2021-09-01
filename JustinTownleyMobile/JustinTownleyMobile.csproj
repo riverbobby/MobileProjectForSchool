@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Content Include="Images\logo.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
