@@ -7,6 +7,7 @@ using SQLite;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace JustinTownleyMobile.Services
 {
@@ -24,40 +25,49 @@ namespace JustinTownleyMobile.Services
             var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyData.db");
 
             db = new SQLiteConnection(databasePath);
-
-            db.CreateTable<Term>();
-            // add default table data
-            var term = new Term
+            // check to see if term table already exists
+            var termTableInfo = db.GetTableInfo("Term");
+            if (termTableInfo.Count == 0 )
             {
-                TermStart = DateTime.Now,
-                TermEnd = DateTime.Now.AddDays(180),
+                // create term table
+                db.CreateTable<Term>();
+                // add default table data
+                Term term = new Term
+                {
+                    TermName = "Term 1",
+                    TermStart = DateTime.Now,
+                    TermEnd = DateTime.Now.AddDays(180),
 
-            };
-            db.Insert(term);
-
-            db.CreateTable<Course>();
-            // add default table data
-            var course = new Course
+                };
+                db.Insert(term);
+            }
+            // check to see if course table already exists
+            var courseTableInfo = db.GetTableInfo("Course");
+            if (courseTableInfo.Count == 0)
             {
-                TermID = 1,
-                CourseName = "Course 1",
-                CourseStart = DateTime.Now,
-                CourseEnd = DateTime.Now.AddDays(30),
-                CourseStatus = 4,
-                CIName = "Justin Townley",
-                CIPhone = "509-496-3180",
-                CIEmail = "jtownl5@wgu.edu",
-                Notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt, nibh et rhoncus hendrerit, ligula ex faucibus justo, non accumsan nisi lacus at lorem. Nulla vehicula fermentum felis, non facilisis libero sagittis vel. Curabitur tortor velit, molestie at malesuada in, egestas id arcu. Nam egestas mollis sagittis. Nullam interdum malesuada diam sit amet imperdiet. Maecenas hendrerit sed eros at auctor. Maecenas vel ante lobortis, ultrices turpis a, congue sapien.",
-                OAName = "OA 1",
-                OAStart = DateTime.Now.AddDays(10),
-                OAEnd = DateTime.Now.AddDays(11),
-                PAName = "PA 1",
-                PAStart = DateTime.Now.AddDays(20),
-                PAEnd = DateTime.Now.AddDays(21)
-            };
-            db.Insert(course);
-
-
+                // create course table
+                db.CreateTable<Course>();
+                // add default table data
+                var course = new Course
+                {
+                    TermID = 1,
+                    CourseName = "Course 1",
+                    CourseStart = DateTime.Now,
+                    CourseEnd = DateTime.Now.AddDays(30),
+                    CourseStatus = 4,
+                    CIName = "Justin Townley",
+                    CIPhone = "509-496-3180",
+                    CIEmail = "jtownl5@wgu.edu",
+                    Notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt, nibh et rhoncus hendrerit, ligula ex faucibus justo, non accumsan nisi lacus at lorem. Nulla vehicula fermentum felis, non facilisis libero sagittis vel. Curabitur tortor velit, molestie at malesuada in, egestas id arcu. Nam egestas mollis sagittis. Nullam interdum malesuada diam sit amet imperdiet. Maecenas hendrerit sed eros at auctor. Maecenas vel ante lobortis, ultrices turpis a, congue sapien.",
+                    OAName = "OA 1",
+                    OAStart = DateTime.Now.AddDays(10),
+                    OAEnd = DateTime.Now.AddDays(11),
+                    PAName = "PA 1",
+                    PAStart = DateTime.Now.AddDays(20),
+                    PAEnd = DateTime.Now.AddDays(21)
+                };
+                db.Insert(course);
+            }
         }
         public static void AddCourse(Course course)
         {
