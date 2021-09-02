@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SQLite;
 
-namespace JustinTownleyMobile
+namespace JustinTownleyMobile.Models
 {
     public class Term
     {

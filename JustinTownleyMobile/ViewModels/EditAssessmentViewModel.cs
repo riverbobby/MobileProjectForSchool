@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using JustinTownleyMobile.Models;
 using JustinTownleyMobile.Services;
 using JustinTownleyMobile.Views;
 using System.Linq;

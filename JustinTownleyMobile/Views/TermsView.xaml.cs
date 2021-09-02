@@ -18,6 +18,22 @@ namespace JustinTownleyMobile.Views
             InitializeComponent();
 
             BindingContext = new TermsViewModel();
+
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+
+        private void Button_Pressed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_Pressed_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

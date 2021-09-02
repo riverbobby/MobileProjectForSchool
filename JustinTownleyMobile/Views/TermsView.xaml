@@ -1,25 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JustinTownleyMobile.Views.TermsView">
+             x:Class="JustinTownleyMobile.Views.TermsView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels">
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Terms" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <Label Text="Terms" TextColor="White" FontSize="Title"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
             <Image Source="logo.jpg" 
                    HorizontalOptions="End"
                    VerticalOptions="FillAndExpand"/>
         </StackLayout>
     </NavigationPage.TitleView>
-    <ContentPage.Content>
+    
+    <ContentPage.BindingContext>
+        <viewmodels:TermsViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <BoxView />
+                <Label Text="Start      " HorizontalOptions="End"/>
+                <Label Text="End  " HorizontalOptions="End"/>
             </StackLayout>
-            <ScrollView>
-                <StackLayout>
-                
-                </StackLayout>
-            </ScrollView>
+            <ListView
+                ItemsSource="{Binding Terms}"
+                ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Term">
+                        <ViewCell>
+                            <StackLayout>
+                                <Frame>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding TermName}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding TermStart}" HorizontalOptions="End"/>
+                                        <Label Text="{Binding TermEnd}" HorizontalOptions="End"/>
+                                    </StackLayout>
+                                </Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button Text="Update"
+                                            Pressed="Button_Pressed" HorizontalOptions="End"/>
+                                    <Button Text="Delete"
+                                            Pressed="Button_Pressed_1" HorizontalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add New Term" HorizontalOptions="End"/>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

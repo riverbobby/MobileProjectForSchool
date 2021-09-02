@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using JustinTownleyMobile.Services;
+using JustinTownleyMobile.Models;
 using JustinTownleyMobile.Views;
 using System.Linq;
 using Xamarin.Forms;
