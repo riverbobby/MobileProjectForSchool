@@ -13,8 +13,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <BoxView Color="#003057" />
-                       
+                <BoxView />
             </StackLayout>
             <ScrollView>
                 <StackLayout>

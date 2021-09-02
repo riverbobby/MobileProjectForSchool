@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using SQLite;
 using System.IO;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Essentials;
 
 namespace JustinTownleyMobile.Services
@@ -14,17 +14,17 @@ namespace JustinTownleyMobile.Services
         public static int CurrentTermID { get; set; }
         public static int CurrentCourseID { get; set; }
 
-        static SQLiteAsyncConnection db;
-        public static async Task Init()
+        static SQLiteConnection db;
+        public static void Init()
         {
             if (db != null)
                 return;
 
             var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyData.db");
 
-            db = new SQLiteAsyncConnection(databasePath);
+            db = new SQLiteConnection(databasePath);
 
-            await db.CreateTableAsync<Term>();
+            db.CreateTable<Term>();
             // add default table data
             var term = new Term
             {
@@ -32,9 +32,9 @@ namespace JustinTownleyMobile.Services
                 TermEnd = DateTime.Now.AddDays(180),
 
             };
-            await db.InsertAsync(term);
+            db.Insert(term);
 
-            await db.CreateTableAsync<Course>();
+            db.CreateTable<Course>();
             // add default table data
             var course = new Course
             {
@@ -54,75 +54,75 @@ namespace JustinTownleyMobile.Services
                 PAStart = DateTime.Now.AddDays(20),
                 PAEnd = DateTime.Now.AddDays(21)
             };
-            await db.InsertAsync(course);
+            db.Insert(course);
 
 
         }
-        public static async Task AddCourse(Course course)
+        public static void AddCourse(Course course)
         {
-            await Init();
+            Init();
 
-            await db.InsertAsync(course);
+            db.Insert(course);
         }
-        public static async Task UpdateCourse(Course course)
+        public static void UpdateCourse(Course course)
         {
-            await db.UpdateAsync(course);
+            db.Update(course);
         } 
-        public static async Task RemoveCourse(int id)
+        public static void RemoveCourse(int id)
         {
-            await Init();
+            Init();
 
-            await db.DeleteAsync<Course>(id);
+            db.Delete<Course>(id);
         }
-        public static async Task<Course> GetCourse(int id)
+        public static Course GetCourse(int id)
         {
-            await Init();
-            var course = await db.GetAsync<Course>(id);
+            Init();
+            var course = db.Get<Course>(id);
             return course;
         }
 
-        public static async Task<List<Course>> GetCourses(int id)
+        public static IEnumerable<Course> GetCourses(int id)
         {
-            await Init();
+            Init();
 
-            var courses = await db.Table<Course>().Where(c=> c.TermID.Equals(id)).ToListAsync();
+            var courses = db.Table<Course>().Where(c=> c.TermID.Equals(id)).ToList();
             return courses;
         }
-        public static async Task AddTerm(Term term)
+        public static void AddTerm(Term term)
         {
-            await Init();
+            Init();
 
-            await db.InsertAsync(term);
+            db.Insert(term);
         }
-        public static async Task UpdateTerm(Term term)
+        public static void UpdateTerm(Term term)
         {
-            await db.UpdateAsync(term);
+            db.Update(term);
         }
 
-        public static async Task RemoveTerm(int id)
+        public static void RemoveTerm(int id)
         {
-            await Init();
+            Init();
        
-            await db.DeleteAsync<Term>(id);
+            db.Delete<Term>(id);
             //performing cascade delete on foreign key
-            var courses = await db.Table<Course>().Where(c => c.TermID.Equals(id)).ToListAsync();
+            var courses = db.Table<Course>().Where(c => c.TermID.Equals(id)).ToList();
             foreach (Course c in courses)
             {
-                await db.DeleteAsync<Course>(c.CourseID);
+                db.Delete<Course>(c.CourseID);
             }
         }
-        public static async Task<Term> GetTerm(int id)
+        public static Term GetTerm(int id)
         {
-            await Init();
+            Init();
             
-            var term = await db.GetAsync<Term>(id);
+            var term = db.Get<Term>(id);
             return term;
         }
-        public static async Task<List<Term>> GetTerms()
+        public static IEnumerable<Term> GetTerms()
         {
-            await Init();
+            Init();
 
-            var terms = await db.Table<Term>().ToListAsync();
+            var terms = db.Table<Term>().ToList();
             return terms;
         }
 

@@ -17,14 +17,14 @@ namespace JustinTownleyMobile.ViewModels
         {
             Refresh();
         }
-        async Task Refresh()
+        void Refresh()
         {
-            var course = await DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
+            Course course = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
             Course = course;
         }
-        async Task Save()
+        public void Save(Course course)
         {
-            await DatabaseService.UpdateCourse(Course);
+            DatabaseService.UpdateCourse(course);
         }
 
     }

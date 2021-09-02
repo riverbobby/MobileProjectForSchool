@@ -24,9 +24,9 @@ namespace JustinTownleyMobile.ViewModels
                 Term = new Term();
             }
         }
-        async Task Refresh()
+        private void Refresh()
         {
-            var term = await DatabaseService.GetTerm(DatabaseService.CurrentTermID);
+            Term term = DatabaseService.GetTerm(DatabaseService.CurrentTermID);
             Term = term;
         }
 

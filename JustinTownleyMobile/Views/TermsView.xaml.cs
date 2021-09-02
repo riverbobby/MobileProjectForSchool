@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using JustinTownleyMobile.ViewModels;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace JustinTownleyMobile.Views
         public TermsView()
         {
             InitializeComponent();
+
             BindingContext = new TermsViewModel();
         }
     }

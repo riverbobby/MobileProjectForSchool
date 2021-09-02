@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using JustinTownleyMobile.Services;
@@ -11,18 +12,21 @@ namespace JustinTownleyMobile.ViewModels
 {
     public class TermsViewModel
     {
-        public List<Term> Terms { get; set; }
+        public ObservableCollection<Term> Terms { get; set; }
 
         public TermsViewModel()
         {
-            Terms = new List<Term>();
+            Terms = new ObservableCollection<Term>();
             Refresh();
         }
-        async Task Refresh()
+        private void Refresh()
         {
             Terms.Clear();
-            var terms = await DatabaseService.GetTerms();
-            Terms.AddRange(terms);
+            IEnumerable<Term> terms = DatabaseService.GetTerms();
+            foreach (Term t in terms)
+            {
+                Terms.Add(t);
+            }
         }
     }
 }
