@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using JustinTownleyMobile.ViewModels;
+using JustinTownleyMobile.Services;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,24 +17,17 @@ namespace JustinTownleyMobile.Views
         public TermsView()
         {
             InitializeComponent();
-
-            BindingContext = new TermsViewModel();
-
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            
         }
 
-        private void Button_Pressed(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void Button_Pressed_1(object sender, EventArgs e)
-        {
-
+            DatabaseService.CurrentTermID = 0;
+            await Navigation.PushAsync(new EditTermView());
         }
     }
 }

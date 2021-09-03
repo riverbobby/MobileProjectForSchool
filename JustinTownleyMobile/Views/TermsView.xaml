@@ -18,36 +18,47 @@
     </ContentPage.BindingContext>
     <ScrollView>
         <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Start      " HorizontalOptions="End"/>
-                <Label Text="End  " HorizontalOptions="End"/>
-            </StackLayout>
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="196"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Start" Grid.Column="1"/>
+                <Label Text="End" Grid.Column="2"/>
+            </Grid>
             <ListView
                 ItemsSource="{Binding Terms}"
-                ItemTapped="ListView_ItemTapped">
+                ItemTapped="ListView_ItemTapped"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:Term">
                         <ViewCell>
-                            <StackLayout>
-                                <Frame>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding TermName}" HorizontalOptions="Start"/>
-                                        <Label Text="{Binding TermStart}" HorizontalOptions="End"/>
-                                        <Label Text="{Binding TermEnd}" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                </Frame>
-                                <StackLayout Orientation="Horizontal">
-                                    <Button Text="Update"
-                                            Pressed="Button_Pressed" HorizontalOptions="End"/>
-                                    <Button Text="Delete"
-                                            Pressed="Button_Pressed_1" HorizontalOptions="End"/>
-                                </StackLayout>
-                            </StackLayout>
+                            <Frame>
+                                <Grid Margin="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="70"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="196"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding TermName}" Grid.Column="0" />
+                                    <Label Text="{Binding TermStart}" Grid.Column="1" />
+                                    <Label Text="{Binding TermEnd}" Grid.Column="2" />
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add New Term" HorizontalOptions="End"/>
+            <Button Text="Add New Term" 
+                    HorizontalOptions="End"
+                    Clicked="Button_Clicked"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
