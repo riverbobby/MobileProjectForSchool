@@ -14,8 +14,6 @@ namespace JustinTownleyMobile.ViewModels
     public class TermsViewModel
     {
         public ObservableCollection<Term> Terms { get; set; }
-        public bool IsBusy = false;
-
         public TermsViewModel()
         {
             Terms = new ObservableCollection<Term>();
@@ -23,15 +21,12 @@ namespace JustinTownleyMobile.ViewModels
         }
         private void Refresh()
         {
-            IsBusy = true;
-
             Terms.Clear();
             IEnumerable<Term> terms = DatabaseService.GetTerms();
             foreach (Term t in terms)
             {
                 Terms.Add(t);
             }
-            IsBusy = false;
         }
     }
 }
