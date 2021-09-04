@@ -1,12 +1,176 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JustinTownleyMobile.Views.CourseView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="JustinTownleyMobile.Views.CourseView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels"
+             xmlns:services="clr-namespace:JustinTownleyMobile.Services">
+    
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Course.CourseName}" 
+                   TextColor="White" 
+                   FontSize="Title"  
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
         </StackLayout>
-    </ContentPage.Content>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.BindingContext>
+        <viewmodels:CourseViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Dates" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Course.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" 
+                           HorizontalOptions="Start" />
+                    <Label Text="-" HorizontalOptions="Center" />
+                    <Label Text="{Binding Course.CourseEnd, StringFormat='{0:MM/dd/yyyy}'}" 
+                           HorizontalOptions="End" />
+                </StackLayout>
+            </Frame>
+            <!--<Label Text="Status" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <Label Text="{Binding Status}" HorizontalOptions="Center" />
+            </Frame>
+            <Label Text="Course Instructor" FontAttributes="Bold" HorizontalOptions="Start" />
+            <Label Text="Name" HorizontalOptions="Start" />
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <Label Text="{Binding Course.CIName}" HorizontalOptions="Center" />
+            </Frame>
+            <Label Text="Phone" HorizontalOptions="Start" />
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <Label Text="{Binding Course.CIPhone}" HorizontalOptions="Center" />
+            </Frame>
+            <Label Text="Email" HorizontalOptions="Start" />
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <Label Text="{Binding Course.CIEmail}" HorizontalOptions="Center" />
+            </Frame>
+            <Label Text="Display Notes" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Switch x:Name="visableNotesSwitch"/>
+            <StackLayout>
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                    Binding="{Binding Source={x:Reference visableNotesSwitch}, Path=IsToggled}"
+                                    Value="true">
+                        <Setter Property="IsVisible"
+                                Value="true"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+                <Label Text="Notes" FontAttributes="Bold" HorizontalOptions="Start"/>
+                    <Frame
+                        CornerRadius="10"
+                        HasShadow="False">
+                        <Label Text="{Binding Course.Notes}"/>
+                    </Frame>
+                    <Button Text="Share Notes"
+                            CornerRadius="10"
+                            HorizontalOptions="End"
+                            Clicked="Share_Button_Clicked"/>
+            </StackLayout>
+            <Label Text="Assessments" FontAttributes="Bold" HorizontalOptions="Start" />
+            <BoxView Color="White" HeightRequest="5" />
+            <BoxView Color="#003057" HeightRequest="1"/>
+            <BoxView Color="White" HeightRequest="5" />
+            <Grid Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="196"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Objective" FontAttributes="Bold" HorizontalOptions="Start" Grid.Column="0"/>
+                <Label Text="Start" FontAttributes="Bold" HorizontalOptions="Center" Grid.Column="1"/>
+                <Label Text="End    " FontAttributes="Bold" HorizontalOptions="Center" Grid.Column="2"/>
+            </Grid>
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="196"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Course.OAName}" Grid.Column="0" />
+                    <Label Text="{Binding Course.OAStart, StringFormat='{0:MM/dd/yyyy}'}" 
+                                           HorizontalOptions="Start" Grid.Column="1" />
+                    <Label Text="{Binding Course.OAEnd, StringFormat='{0:MM/dd/yyyy}'}" 
+                                           HorizontalOptions="End" Grid.Column="2" />
+                </Grid>
+            </Frame>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Update"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Clicked="Update_OA_Button_Clicked"/>
+                <Button Text="Delete"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Clicked="Delete_OA_Button_Clicked"/>
+            </StackLayout>
+            <Grid Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="196"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Performance" FontAttributes="Bold" HorizontalOptions="Start" Grid.Column="0"/>
+                <Label Text="Start" FontAttributes="Bold" HorizontalOptions="Center" Grid.Column="1"/>
+                <Label Text="End    " FontAttributes="Bold" HorizontalOptions="Center" Grid.Column="2"/>
+            </Grid>
+            <Frame
+                CornerRadius="10"
+                HasShadow="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="196"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Course.PAName}" Grid.Column="0" />
+                    <Label Text="{Binding Course.PAStart, StringFormat='{0:MM/dd/yyyy}'}" 
+                                           HorizontalOptions="Start" Grid.Column="1" />
+                    <Label Text="{Binding Course.PAEnd, StringFormat='{0:MM/dd/yyyy}'}" 
+                                           HorizontalOptions="End" Grid.Column="2" />
+                </Grid>
+            </Frame>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Update"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Clicked="Update_PA_Button_Clicked"/>
+                <Button Text="Delete"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Clicked="Delete_PA_Button_Clicked"/>
+            </StackLayout>-->
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
