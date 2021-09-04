@@ -26,12 +26,15 @@ namespace JustinTownleyMobile.Views
             await Navigation.PushAsync(new CourseView());
         }
 
-        private async void Add_New_Term_Button_Clicked(object sender, EventArgs e)
+        private async void Add_New_Course_Button_Clicked(object sender, EventArgs e)
         {
             DatabaseService.CurrentCourseID = 0;
             await Navigation.PushAsync(new EditCourseView());
         }
-
+        private async void Edit_Term_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditTermView());
+        }
         private async void Delete_Term_Button_Clicked(object sender, EventArgs e)
         {
             string action = await DisplayActionSheet("This will delete term \nAND all classes in term", "Cancel", "Delete");
@@ -42,6 +45,5 @@ namespace JustinTownleyMobile.Views
                 await Navigation.PopAsync();
             }
         }
-
     }
 }
