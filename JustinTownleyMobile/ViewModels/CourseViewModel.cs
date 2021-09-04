@@ -13,7 +13,7 @@ namespace JustinTownleyMobile.ViewModels
 {
     public class CourseViewModel
     {
-        public static Course Course { get; set; }
+        public Course Course { get; set; }
         public string Status { get; set; }
 
         public CourseViewModel()

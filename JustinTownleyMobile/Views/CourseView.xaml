@@ -36,7 +36,7 @@
                            HorizontalOptions="End" />
                 </StackLayout>
             </Frame>
-            <!--<Label Text="Status" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Label Text="Status" FontAttributes="Bold" HorizontalOptions="Start"/>
             <Frame
                 CornerRadius="10"
                 HasShadow="True">
@@ -170,7 +170,7 @@
                         CornerRadius="10"
                         HorizontalOptions="End"
                         Clicked="Delete_PA_Button_Clicked"/>
-            </StackLayout>-->
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

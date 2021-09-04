@@ -22,10 +22,12 @@ namespace JustinTownleyMobile.Views
         }
         private async void Share_Button_Clicked(object sender, EventArgs e)
         {
+            Course localCourse = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
+
             await Share.RequestAsync(new ShareTextRequest
             {
-                Text = CourseViewModel.Course.Notes,
-                Title = $"{CourseViewModel.Course.CourseName} Notes"
+                Text = localCourse.Notes,
+                Title = $"{localCourse.CourseName} Notes"
             });
         }
         private void Update_OA_Button_Clicked(object sender, EventArgs e)
