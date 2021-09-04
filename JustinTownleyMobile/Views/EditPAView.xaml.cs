@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JustinTownleyMobile.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace JustinTownleyMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditAssessmentView : ContentPage
+    public partial class EditPAView : ContentPage
     {
-        public EditAssessmentView()
+        public EditPAView()
         {
             InitializeComponent();
-            BindingContext = new EditAssessmentViewModel();
         }
     }
 }

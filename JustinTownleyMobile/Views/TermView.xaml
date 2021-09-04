@@ -62,9 +62,15 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-        <Button Text="add new course" 
-                        HorizontalOptions="End"
-                        CornerRadius="10"
-                        Clicked="Button_Clicked"/>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="add new course" 
+                            HorizontalOptions="End"
+                            CornerRadius="10"
+                            Clicked="Add_New_Term_Button_Clicked"/>
+            <Button Text="Delete Term" 
+                            HorizontalOptions="End"
+                            CornerRadius="10"
+                            Clicked="Delete_Term_Button_Clicked"/>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

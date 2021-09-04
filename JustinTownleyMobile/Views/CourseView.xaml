@@ -62,26 +62,19 @@
                 <Label Text="{Binding Course.CIEmail}" HorizontalOptions="Center" />
             </Frame>
             <Label Text="Display Notes" FontAttributes="Bold" HorizontalOptions="Start"/>
-            <Switch x:Name="visableNotesSwitch"/>
-            <StackLayout>
-                <StackLayout.Triggers>
-                    <DataTrigger TargetType="StackLayout"
-                                    Binding="{Binding Source={x:Reference visableNotesSwitch}, Path=IsToggled}"
-                                    Value="true">
-                        <Setter Property="IsVisible"
-                                Value="true"/>
-                    </DataTrigger>
-                </StackLayout.Triggers>
+            <Switch x:Name="visableNotesSwitch"
+                    IsToggled="False" HorizontalOptions="Start"/>
+            <StackLayout IsVisible="{Binding Source={x:Reference visableNotesSwitch}, Path=IsToggled}">
                 <Label Text="Notes" FontAttributes="Bold" HorizontalOptions="Start"/>
-                    <Frame
+                <Frame
+                    CornerRadius="10"
+                    HasShadow="False">
+                    <Label Text="{Binding Course.Notes}"/>
+                </Frame>
+                <Button Text="Share Notes"
                         CornerRadius="10"
-                        HasShadow="False">
-                        <Label Text="{Binding Course.Notes}"/>
-                    </Frame>
-                    <Button Text="Share Notes"
-                            CornerRadius="10"
-                            HorizontalOptions="End"
-                            Clicked="Share_Button_Clicked"/>
+                        HorizontalOptions="End"
+                        Clicked="Share_Button_Clicked"/>
             </StackLayout>
             <Label Text="Assessments" FontAttributes="Bold" HorizontalOptions="Start" />
             <BoxView Color="White" HeightRequest="5" />
@@ -120,11 +113,11 @@
                 </Grid>
             </Frame>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Update"
+                <Button Text="Update OA"
                         CornerRadius="10"
                         HorizontalOptions="End"
                         Clicked="Update_OA_Button_Clicked"/>
-                <Button Text="Delete"
+                <Button Text="Delete OA"
                         CornerRadius="10"
                         HorizontalOptions="End"
                         Clicked="Delete_OA_Button_Clicked"/>
@@ -162,14 +155,24 @@
                 </Grid>
             </Frame>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Update"
+                <Button Text="Update PA"
                         CornerRadius="10"
                         HorizontalOptions="End"
                         Clicked="Update_PA_Button_Clicked"/>
-                <Button Text="Delete"
+                <Button Text="Delete PA"
                         CornerRadius="10"
                         HorizontalOptions="End"
                         Clicked="Delete_PA_Button_Clicked"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Update Class"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Clicked="Update_Class_Button_Clicked"/>
+                <Button Text="Delete Class"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Clicked="Delete_Class_Button_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ScrollView>

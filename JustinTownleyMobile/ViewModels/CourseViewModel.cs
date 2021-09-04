@@ -44,7 +44,6 @@ namespace JustinTownleyMobile.ViewModels
             {
                 return "plan to take";
             }
-
         }
     }
 }

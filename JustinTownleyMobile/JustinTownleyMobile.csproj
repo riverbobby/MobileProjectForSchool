@@ -21,10 +21,13 @@
     <EmbeddedResource Update="Views\CourseView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditAssessmentView.xaml">
+    <EmbeddedResource Update="Views\EditCourseView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditCourseView.xaml">
+    <EmbeddedResource Update="Views\EditOAView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditPAView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EditTermView.xaml">
@@ -41,9 +44,6 @@
   <ItemGroup>
     <Compile Update="Views\CourseView.xaml.cs">
       <DependentUpon>CourseView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\EditAssessmentView.xaml.cs">
-      <DependentUpon>EditAssessmentView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\EditCourseView.xaml.cs">
       <DependentUpon>EditCourseView.xaml</DependentUpon>

@@ -10,11 +10,11 @@ using Xamarin.Forms;
 
 namespace JustinTownleyMobile.ViewModels
 {
-    public class EditAssessmentViewModel
+    public class EditPAViewModel
     {
         public Course Course { get; set; }
 
-        public EditAssessmentViewModel()
+        public EditPAViewModel()
         {
             Refresh();
         }
