@@ -21,7 +21,7 @@ namespace JustinTownleyMobile.ViewModels
             Courses = new ObservableCollection<Course>();
             Refresh();
         }
-        private void Refresh()
+        public void Refresh()
         {
             Courses.Clear();
             Term term = DatabaseService.GetTerm(DatabaseService.CurrentTermID);

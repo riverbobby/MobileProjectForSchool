@@ -20,6 +20,12 @@ namespace JustinTownleyMobile.Views
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            this.BindingContext = new CourseViewModel();
+        }
+
         private async void Share_Button_Clicked(object sender, EventArgs e)
         {
             Course localCourse = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);

@@ -19,7 +19,11 @@ namespace JustinTownleyMobile.Views
         {
             InitializeComponent();
         }
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            this.BindingContext = new TermViewModel();
+        }
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DatabaseService.CurrentCourseID = (e.CurrentSelection.FirstOrDefault() as Course).CourseID;

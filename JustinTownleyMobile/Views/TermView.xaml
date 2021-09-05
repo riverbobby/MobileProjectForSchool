@@ -67,7 +67,7 @@
                             HorizontalOptions="End"
                             CornerRadius="10"
                             Clicked="Add_New_Course_Button_Clicked"/>
-            <Button Text="add new course" 
+            <Button Text="Edit Term" 
                             HorizontalOptions="End"
                             CornerRadius="10"
                             Clicked="Edit_Term_Button_Clicked"/>

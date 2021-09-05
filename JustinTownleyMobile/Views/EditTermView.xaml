@@ -1,14 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JustinTownleyMobile.Views.EditTermView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Editor Placeholder="Enter a name" 
-                    Text="{Binding TermName}" 
-                    HeightRequest="100" />
-            <DatePicker Date="{Binding TermStart}"/>
-            <DatePicker Date="{Binding TermEnd}"/>
+             x:Class="JustinTownleyMobile.Views.EditTermView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels"
+             xmlns:services="clr-namespace:JustinTownleyMobile.Services">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Title}" 
+                   TextColor="White" 
+                   FontSize="Title"  
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
         </StackLayout>
-    </ContentPage.Content>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:EditTermViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Term Name" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Entry Placeholder="Enter a term name here" 
+                   Text="{Binding termName, Mode=TwoWay}"/>
+            <Label Text="Term Start" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <DatePicker Date="{Binding termStart}"
+                        MaximumDate="{Binding termEnd}"/>
+            <Label Text="Term End" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <DatePicker Date="{Binding termEnd}"
+                        MinimumDate="{Binding termStart}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding CancelCommand}"/>
+                <Button Text="Save"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding SaveCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

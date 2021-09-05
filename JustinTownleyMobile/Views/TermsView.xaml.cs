@@ -19,6 +19,12 @@ namespace JustinTownleyMobile.Views
         {
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            this.BindingContext = new TermsViewModel();
+        }
+
 
         private async void Button_Clicked(object sender, EventArgs e)
         {

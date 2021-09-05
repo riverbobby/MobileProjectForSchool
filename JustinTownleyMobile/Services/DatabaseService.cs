@@ -126,7 +126,7 @@ namespace JustinTownleyMobile.Services
         {
             Init();
             
-            var term = db.Get<Term>(id);
+            Term term = db.Get<Term>(id);
             return term;
         }
         public static IEnumerable<Term> GetTerms()
