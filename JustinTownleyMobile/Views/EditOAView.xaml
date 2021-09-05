@@ -28,10 +28,16 @@
             <Label Text="Assessment Title" FontAttributes="Bold" HorizontalOptions="Start"/>
             <Entry Placeholder="Enter assessment name here" 
                    Text="{Binding oAName, Mode=TwoWay}"/>
-            <Label Text="Assessment Start" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Assessment Start (Must be after course start)->" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+            </StackLayout>
             <DatePicker Date="{Binding oAStart}"
                         MaximumDate="{Binding oAEnd}"/>
-            <Label Text="Assessment End" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Assessment End (Must be before course end)->" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+            </StackLayout>
             <DatePicker Date="{Binding oAEnd}"
                         MinimumDate="{Binding oAStart}"/>
             <StackLayout Orientation="Horizontal">

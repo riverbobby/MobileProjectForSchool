@@ -1,12 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JustinTownleyMobile.Views.EditPAView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="JustinTownleyMobile.Views.EditPAView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels"
+             xmlns:services="clr-namespace:JustinTownleyMobile.Services">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Update PA" 
+                   TextColor="White" 
+                   FontSize="Title"  
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
         </StackLayout>
-    </ContentPage.Content>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:EditPAViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Assessment Title" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Entry Placeholder="Enter assessment name here" 
+                   Text="{Binding pAName, Mode=TwoWay}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Assessment Start (Must be after course start)->" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+            </StackLayout>
+            <DatePicker Date="{Binding pAStart}"
+                        MaximumDate="{Binding pAEnd}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Assessment End (Must be before course end)->" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+            </StackLayout>
+            <DatePicker Date="{Binding pAEnd}"
+                        MinimumDate="{Binding pAStart}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding CancelCommand}"/>
+                <Button Text="Save"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding SaveCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
