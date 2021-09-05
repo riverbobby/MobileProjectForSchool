@@ -25,6 +25,16 @@ namespace JustinTownleyMobile.Views
             base.OnAppearing();
             this.BindingContext = new CourseViewModel();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            DatabaseService.CurrentCourseID = 0;
+            return base.OnBackButtonPressed();
+        }
+        async void OnPreviousPageButtonClicked(object sender, EventArgs e)
+        {
+            DatabaseService.CurrentCourseID = 0;
+            await Navigation.PopAsync();
+        }
 
         private async void Share_Button_Clicked(object sender, EventArgs e)
         {

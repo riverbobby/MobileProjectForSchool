@@ -19,13 +19,5 @@ namespace JustinTownleyMobile.Models
             TermStart = DateTime.Now;
             TermEnd = DateTime.Now.AddDays(1);
         }
-        //constructor for current term
-        //public Term(int ID, string name, DateTime start, DateTime end)
-        //{
-        //    TermID = ID;
-        //    TermName = name;
-        //    TermStart = start;
-        //    TermEnd = end;
-        //}
     }
 }

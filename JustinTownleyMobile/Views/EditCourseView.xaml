@@ -1,12 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JustinTownleyMobile.Views.EditCourseView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="JustinTownleyMobile.Views.EditCourseView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels"
+             xmlns:services="clr-namespace:JustinTownleyMobile.Services">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Title}" 
+                   TextColor="White" 
+                   FontSize="Title"  
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
         </StackLayout>
-    </ContentPage.Content>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:EditCourseViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Course Title" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Entry Placeholder="Enter course name here" 
+                       Text="{Binding courseName, Mode=TwoWay}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Course Start (Must be after term start)->" FontAttributes="Bold" HorizontalOptions="Start"/>
+                    <Label Text="{Binding TermStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+                <DatePicker Date="{Binding courseStart}"
+                            MaximumDate="{Binding courseEnd}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Course End (Must be before term end)->" FontAttributes="Bold" HorizontalOptions="Start"/>
+                    <Label Text="{Binding TermEnd, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+                <DatePicker Date="{Binding courseEnd}"
+                            MinimumDate="{Binding courseStart}"/>
+                <Picker Title="Course Status"
+                        SelectedIndex="{Binding courseStatus}"
+                        SelectedItem="{Binding PickerDisplay}"/>
+                <Label Text="Course Instructor Name" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Entry Placeholder="Enter a name here" 
+                       Text="{Binding cIName, Mode=TwoWay}"/>
+                <Label Text="Course Instructor phone" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Entry Placeholder="555-555-5555" 
+                       Text="{Binding cIPhone, Mode=TwoWay}"/>
+                <Label Text="Course Instructor Email" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Entry Placeholder="someone@domain.edu" 
+                       Text="{Binding cIEmail, Mode=TwoWay}"/>
+                <Label Text="Course Notes" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Editor Placeholder="Optional notes for course...\nmay be several lines...\n..."
+                        Text="{Binding notes, Mode=TwoWay}"
+                        AutoSize="TextChanges"/>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Cancel"
+                            CornerRadius="10"
+                            HorizontalOptions="End"
+                            Command="{Binding CancelCommand}"/>
+            <Button Text="Save"
+                            CornerRadius="10"
+                            HorizontalOptions="End"
+                            Command="{Binding SaveCommand}"/>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

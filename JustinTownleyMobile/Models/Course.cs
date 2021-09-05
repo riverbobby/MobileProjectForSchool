@@ -30,35 +30,18 @@ namespace JustinTownleyMobile.Models
         public Course()
         {
             TermID = Services.DatabaseService.CurrentTermID;
+            CourseName = "";
             CourseStart = DateTime.Now;
             CourseEnd = DateTime.Now.AddDays(1);
-            CourseStatus = 4; // 4 = plan to take
+            CourseStatus = 3; // 3 = plan to take
+            CIName = "";
+            CIEmail = "";
+            CIPhone = "";
+            Notes = "";
             OAStart = DateTime.Now;
             OAEnd = DateTime.Now.AddDays(1);
             PAStart = DateTime.Now;
             PAEnd = DateTime.Now.AddDays(1);
         }
-        //constructor for current course
-        //public Course(int ID, string courseName, DateTime courseStart, DateTime courseEnd, int status, 
-        //    string ciName, string ciPhone, string ciEmail, string notes, string oaName, DateTime oaStart, 
-        //    DateTime oaEnd, string paName, DateTime paStart, DateTime paEnd)
-        //{
-        //    CourseID = ID;
-        //    CourseName = courseName;
-        //    CourseStart = courseStart;
-        //    CourseEnd = courseEnd;
-        //    CourseStatus = status;
-        //    CIName = ciName;
-        //    CIPhone = ciPhone;
-        //    CIEmail = ciEmail;
-        //    Notes = notes;
-        //    OAName = oaName;
-        //    OAStart = oaStart;
-        //    OAEnd = oaEnd;
-        //    PAName = paName;
-        //    PAStart = paStart;
-        //    PAEnd = paEnd;
-
-        //}
     }
 }

@@ -13,7 +13,7 @@ namespace JustinTownleyMobile.ViewModels
 {
     public class CourseViewModel
     {
-        public Course Course { get; set; }
+        public Course CurrentCourse { get; set; }
         public string Status { get; set; }
 
         public CourseViewModel()
@@ -23,20 +23,20 @@ namespace JustinTownleyMobile.ViewModels
         private void Refresh()
         {
             Course course = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
-            Status = GetStatus(course.CourseStatus);
-            Course = course;
+            Status = GetString(course.CourseStatus);
+            CurrentCourse = course;
         }
-        private string GetStatus(int statusInt)
+        private string GetString(int statusInt)
         {
-            if (statusInt == 1)
+            if (statusInt == 0)
             {
                 return "in progress";
             }
-            else if (statusInt == 2)
+            else if (statusInt == 1)
             {
                 return "completed";
             }
-            else if (statusInt == 3)
+            else if (statusInt == 2)
             {
                 return "dropped";
             }

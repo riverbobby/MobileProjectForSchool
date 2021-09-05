@@ -15,7 +15,6 @@ namespace JustinTownleyMobile.Views
         public EditCourseView()
         {
             InitializeComponent();
-            BindingContext = new EditCourseViewModel();
         }
     }
 }
