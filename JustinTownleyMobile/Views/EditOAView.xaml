@@ -1,12 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JustinTownleyMobile.Views.EditOAView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="JustinTownleyMobile.Views.EditOAView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels"
+             xmlns:services="clr-namespace:JustinTownleyMobile.Services">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Update OA" 
+                   TextColor="White" 
+                   FontSize="Title"  
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
         </StackLayout>
-    </ContentPage.Content>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:EditOAViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Assessment Title" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Entry Placeholder="Enter assessment name here" 
+                   Text="{Binding oAName, Mode=TwoWay}"/>
+            <Label Text="Assessment Start" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <DatePicker Date="{Binding oAStart}"
+                        MaximumDate="{Binding oAEnd}"/>
+            <Label Text="Assessment End" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <DatePicker Date="{Binding oAEnd}"
+                        MinimumDate="{Binding oAStart}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding CancelCommand}"/>
+                <Button Text="Save"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding SaveCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
