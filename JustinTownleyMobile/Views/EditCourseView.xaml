@@ -43,7 +43,7 @@
                 <DatePicker Date="{Binding courseEnd}"
                             MinimumDate="{Binding TermStart}"
                             MaximumDate="{Binding TermEnd}"/>
-                <Label Text="Course Status           *required" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="Course Status           *must click to update" FontAttributes="Bold" HorizontalOptions="Start"/>
                 <Picker SelectedIndex="{Binding courseStatus, Mode=TwoWay}"
                         ItemsSource="{Binding PickerDisplay, Mode=TwoWay}"/>
                 <Label Text="Course Instructor Name           *required" FontAttributes="Bold" HorizontalOptions="Start"/>

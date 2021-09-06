@@ -27,7 +27,7 @@ namespace JustinTownleyMobile.ViewModels
         public DateTime courseStart { get => _courseStart; set { _courseStart = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(courseStart))); } }
         public DateTime courseEnd { get => _courseEnd; set { _courseEnd = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(courseEnd))); } }
         public int courseStatus { get => _courseStatus; set { _courseStatus = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(courseStatus))); } }
-        public string cIName { get => _cIName; set { _courseName = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(cIName))); } }
+        public string cIName { get => _cIName; set { _cIName = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(cIName))); } }
         public string cIPhone { get => _cIPhone; set { _cIPhone = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(cIPhone))); } }
         public string cIEmail { get => _cIEmail; set { _cIEmail = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(cIEmail))); } }
         public string notes { get => _notes; set { _notes = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(notes))); } }
@@ -63,7 +63,7 @@ namespace JustinTownleyMobile.ViewModels
                 Course course = new Course();
                 courseName = course.CourseName;
                 courseStart = course.CourseStart;
-                courseEnd = course.CourseStart;
+                courseEnd = course.CourseEnd;
                 courseStatus = course.CourseStatus;
                 cIName = course.CIName;
                 cIPhone = course.CIPhone;
@@ -122,7 +122,7 @@ namespace JustinTownleyMobile.ViewModels
             Course course = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
             courseName = course.CourseName;
             courseStart = course.CourseStart;
-            courseEnd = course.CourseStart;
+            courseEnd = course.CourseEnd;
             courseStatus = course.CourseStatus;
             cIName = course.CIName;
             cIPhone = course.CIPhone;
