@@ -120,7 +120,6 @@ namespace JustinTownleyMobile.ViewModels
         {
             Title = "Edit Course";
             Course course = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
-            CurrentCourse = course;
             courseName = course.CourseName;
             courseStart = course.CourseStart;
             courseEnd = course.CourseStart;
@@ -129,6 +128,7 @@ namespace JustinTownleyMobile.ViewModels
             cIPhone = course.CIPhone;
             cIEmail = course.CIEmail;
             notes = course.Notes;
+            CurrentCourse = course;
         }
         private void PopulatePickerDisplay()
         {

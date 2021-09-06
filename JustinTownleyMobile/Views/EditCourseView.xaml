@@ -26,7 +26,7 @@
     <StackLayout>
         <ScrollView>
             <StackLayout>
-                <Label Text="Course Title" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="Course Title           *required" FontAttributes="Bold" HorizontalOptions="Start"/>
                 <Entry Placeholder="Enter course name here" 
                        Text="{Binding courseName, Mode=TwoWay}"/>
                 <StackLayout Orientation="Horizontal">
@@ -43,16 +43,16 @@
                 <DatePicker Date="{Binding courseEnd}"
                             MinimumDate="{Binding TermStart}"
                             MaximumDate="{Binding TermEnd}"/>
-                <Picker Title="Course Status"
-                        SelectedIndex="{Binding courseStatus, Mode=TwoWay}"
-                        SelectedItem="{Binding PickerDisplay, Mode=TwoWay}"/>
-                <Label Text="Course Instructor Name" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="Course Status           *required" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Picker SelectedIndex="{Binding courseStatus, Mode=TwoWay}"
+                        ItemsSource="{Binding PickerDisplay, Mode=TwoWay}"/>
+                <Label Text="Course Instructor Name           *required" FontAttributes="Bold" HorizontalOptions="Start"/>
                 <Entry Placeholder="Enter a name here" 
                        Text="{Binding cIName, Mode=TwoWay}"/>
-                <Label Text="Course Instructor phone" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="Course Instructor phone           *required" FontAttributes="Bold" HorizontalOptions="Start"/>
                 <Entry Placeholder="555-555-5555" 
                        Text="{Binding cIPhone, Mode=TwoWay}"/>
-                <Label Text="Course Instructor Email" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Label Text="Course Instructor Email           *required" FontAttributes="Bold" HorizontalOptions="Start"/>
                 <Entry Placeholder="someone@domain.edu" 
                        Text="{Binding cIEmail, Mode=TwoWay}"/>
                 <Label Text="Course Notes" FontAttributes="Bold" HorizontalOptions="Start"/>
