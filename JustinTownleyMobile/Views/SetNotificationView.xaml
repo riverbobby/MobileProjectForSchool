@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JustinTownleyMobile.Views.SetNotificationView"
+             xmlns:model="clr-namespace:JustinTownleyMobile.Models"
+             xmlns:viewmodels="clr-namespace:JustinTownleyMobile.ViewModels"
+             xmlns:services="clr-namespace:JustinTownleyMobile.Services">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="New Notification" 
+                   TextColor="White" 
+                   FontSize="Title"  
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" />
+            <Image Source="logo.jpg" 
+                   HorizontalOptions="End"
+                   VerticalOptions="FillAndExpand"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:SetNotificationViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Relevant Dates" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding CurrentCourse.CourseName}" HorizontalOptions="Start"/>
+                            <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" 
+                                       HorizontalOptions="Center" />
+                            <Label Text="-" HorizontalOptions="Center" />
+                            <Label Text="{Binding CurrentCourse.CourseEnd, StringFormat='{0:MM/dd/yyyy}'}" 
+                                       HorizontalOptions="End" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding CurrentCourse.OAName}" HorizontalOptions="Start"/>
+                            <Label Text="{Binding CurrentCourse.OAStart, StringFormat='{0:MM/dd/yyyy}'}" 
+                                       HorizontalOptions="Center" />
+                            <Label Text="-" HorizontalOptions="Center" />
+                            <Label Text="{Binding CurrentCourse.OAEnd, StringFormat='{0:MM/dd/yyyy}'}" 
+                                       HorizontalOptions="End" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding CurrentCourse.PAName}" HorizontalOptions="Start"/>
+                            <Label Text="{Binding CurrentCourse.PAStart, StringFormat='{0:MM/dd/yyyy}'}" 
+                                       HorizontalOptions="Center" />
+                            <Label Text="-" HorizontalOptions="Center" />
+                            <Label Text="{Binding CurrentCourse.PAEnd, StringFormat='{0:MM/dd/yyyy}'}" 
+                                       HorizontalOptions="End" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout RadioButtonGroup.GroupName="Type"
+                             RadioButtonGroup.SelectedValue="{Binding Type}">
+                        <Label Text="Pick Course or Assessment" 
+                           FontAttributes="Bold" HorizontalOptions="Start"/>
+                        <RadioButton Content="{Binding CurrentCourse.CourseName}"
+                                 IsChecked="True"/>
+                        <RadioButton Content="{Binding CurrentCourse.OAName}"/>
+                        <RadioButton Content="{Binding CurrentCourse.PAName}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame CornerRadius="10" HasShadow="True">
+                    <StackLayout RadioButtonGroup.GroupName="StartOrEnd"
+                             RadioButtonGroup.SelectedValue="{Binding StartOrEnd}">
+                        <Label Text="Pick Start or End or Other Important Date" 
+                           FontAttributes="Bold" HorizontalOptions="Start"/>
+                        <RadioButton Content="Start"
+                                 IsChecked="True"/>
+                        <RadioButton Content="End"/>
+                        <RadioButton Content="Other Important Date"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Notification Date" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <DatePicker Date="{Binding NotificationDate}"/>
+                <Label Text="Notification Time" FontAttributes="Bold" HorizontalOptions="Start"/>
+                <TimePicker Time="{Binding NotificationTime}"/>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Cancel"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding CancelCommand}"/>
+            <Button Text="Schedule"
+                        CornerRadius="10"
+                        HorizontalOptions="End"
+                        Command="{Binding SaveCommand}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

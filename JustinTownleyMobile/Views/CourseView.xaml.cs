@@ -85,7 +85,10 @@ namespace JustinTownleyMobile.Views
             }
 
         }
-
+        private async void Add_Notification_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SetNotificationView());
+        }
         private async void Update_Class_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditCourseView());
@@ -100,7 +103,6 @@ namespace JustinTownleyMobile.Views
                 DatabaseService.CurrentCourseID = 0;
                 await Navigation.PopAsync();
             }
-
         }
     }
 }

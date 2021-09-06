@@ -32,9 +32,9 @@
                     <StackLayout Orientation="Horizontal">
                         <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" 
                                HorizontalOptions="Start" />
-                        <Label Text="-" HorizontalOptions="Center" />
+                        <Label Text="-" HorizontalOptions="Center" FontAttributes="Bold"/>
                         <Label Text="{Binding CurrentCourse.CourseEnd, StringFormat='{0:MM/dd/yyyy}'}" 
-                               HorizontalOptions="End" />
+                               HorizontalOptions="Start" />
                     </StackLayout>
                 </Frame>
                 <Label Text="Status" FontAttributes="Bold" HorizontalOptions="Start"/>
@@ -168,9 +168,13 @@
             </StackLayout>
         </ScrollView>
         <StackLayout Orientation="Horizontal">
+            <Button Text="Set Notification"
+                            CornerRadius="10"
+                            HorizontalOptions="Start"
+                            Clicked="Add_Notification_Button_Clicked"/>
             <Button Text="Update Class"
                             CornerRadius="10"
-                            HorizontalOptions="End"
+                            HorizontalOptions="Center"
                             Clicked="Update_Class_Button_Clicked"/>
             <Button Text="Delete Class"
                             CornerRadius="10"
