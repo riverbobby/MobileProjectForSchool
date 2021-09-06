@@ -28,11 +28,9 @@
             <Entry Placeholder="Enter a term name here" 
                    Text="{Binding termName, Mode=TwoWay}"/>
             <Label Text="Term Start" FontAttributes="Bold" HorizontalOptions="Start"/>
-            <DatePicker Date="{Binding termStart}"
-                        MaximumDate="{Binding termEnd}"/>
+            <DatePicker Date="{Binding termStart}"/>
             <Label Text="Term End" FontAttributes="Bold" HorizontalOptions="Start"/>
-            <DatePicker Date="{Binding termEnd}"
-                        MinimumDate="{Binding termStart}"/>
+            <DatePicker Date="{Binding termEnd}"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel"
                         CornerRadius="10"

@@ -33,13 +33,15 @@
                 <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
             </StackLayout>
             <DatePicker Date="{Binding pAStart}"
-                        MaximumDate="{Binding pAEnd}"/>
+                        MinimumDate="{Binding CurrentCourse.CourseStart}"
+                        MaximumDate="{Binding CurrentCourse.CourseEnd}"/>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Assessment End (Must be before course end)->" FontAttributes="Bold" HorizontalOptions="Start"/>
-                <Label Text="{Binding CurrentCourse.CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label Text="{Binding CurrentCourse.CourseEnd, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
             </StackLayout>
             <DatePicker Date="{Binding pAEnd}"
-                        MinimumDate="{Binding pAStart}"/>
+                        MinimumDate="{Binding CurrentCourse.CourseStart}"
+                        MaximumDate="{Binding CurrentCourse.CourseEnd}"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel"
                         CornerRadius="10"

@@ -63,9 +63,9 @@ namespace JustinTownleyMobile.ViewModels
         {
             Course course = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
             CurrentCourse = course;
-            pAName = CurrentCourse.OAName;
-            pAStart = CurrentCourse.OAStart;
-            pAEnd = CurrentCourse.OAEnd;
+            pAName = CurrentCourse.PAName;
+            pAStart = CurrentCourse.PAStart;
+            pAEnd = CurrentCourse.PAEnd;
 
         }
     }

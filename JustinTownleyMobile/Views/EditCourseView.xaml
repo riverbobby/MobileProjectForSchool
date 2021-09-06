@@ -34,16 +34,18 @@
                     <Label Text="{Binding TermStart, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </StackLayout>
                 <DatePicker Date="{Binding courseStart}"
-                            MaximumDate="{Binding courseEnd}"/>
+                            MinimumDate="{Binding TermStart}"
+                            MaximumDate="{Binding TermEnd}"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Course End (Must be before term end)->" FontAttributes="Bold" HorizontalOptions="Start"/>
                     <Label Text="{Binding TermEnd, StringFormat='{0:MM/dd/yyyy}'}" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </StackLayout>
                 <DatePicker Date="{Binding courseEnd}"
-                            MinimumDate="{Binding courseStart}"/>
+                            MinimumDate="{Binding TermStart}"
+                            MaximumDate="{Binding TermEnd}"/>
                 <Picker Title="Course Status"
-                        SelectedIndex="{Binding courseStatus}"
-                        SelectedItem="{Binding PickerDisplay}"/>
+                        SelectedIndex="{Binding courseStatus, Mode=TwoWay}"
+                        SelectedItem="{Binding PickerDisplay, Mode=TwoWay}"/>
                 <Label Text="Course Instructor Name" FontAttributes="Bold" HorizontalOptions="Start"/>
                 <Entry Placeholder="Enter a name here" 
                        Text="{Binding cIName, Mode=TwoWay}"/>

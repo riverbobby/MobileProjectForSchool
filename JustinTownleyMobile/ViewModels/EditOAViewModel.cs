@@ -62,11 +62,10 @@ namespace JustinTownleyMobile.ViewModels
         void Refresh()
         {
             Course course = DatabaseService.GetCourse(DatabaseService.CurrentCourseID);
+            oAName = course.OAName;
+            oAStart = course.OAStart;
+            oAEnd = course.OAEnd;
             CurrentCourse = course;
-            oAName = CurrentCourse.OAName;
-            oAStart = CurrentCourse.OAStart;
-            oAEnd = CurrentCourse.OAEnd;
-
         }
     }
 }
