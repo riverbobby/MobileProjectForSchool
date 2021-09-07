@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Plugin.LocalNotification;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -14,6 +14,9 @@ namespace JustinTownleyMobile.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            //creating notification channel
+            NotificationCenter.CreateNotificationChannel();
+            
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

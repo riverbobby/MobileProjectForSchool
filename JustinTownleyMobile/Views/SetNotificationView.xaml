@@ -55,25 +55,25 @@
                     </StackLayout>
                 </Frame>
                 <Frame CornerRadius="10" HasShadow="True">
-                    <StackLayout RadioButtonGroup.GroupName="Type"
-                             RadioButtonGroup.SelectedValue="{Binding Type}">
+                    <StackLayout>
                         <Label Text="Pick Course or Assessment" 
                            FontAttributes="Bold" HorizontalOptions="Start"/>
                         <RadioButton Content="{Binding CurrentCourse.CourseName}"
-                                 IsChecked="True"/>
-                        <RadioButton Content="{Binding CurrentCourse.OAName}"/>
-                        <RadioButton Content="{Binding CurrentCourse.PAName}"/>
+                                     IsChecked="{Binding c}"/>
+                        <RadioButton Content="{Binding CurrentCourse.OAName}"
+                                     IsChecked="{Binding o}"/>
+                        <RadioButton Content="{Binding CurrentCourse.PAName}"
+                                     IsChecked="{Binding p}"/>
                     </StackLayout>
                 </Frame>
                 <Frame CornerRadius="10" HasShadow="True">
-                    <StackLayout RadioButtonGroup.GroupName="StartOrEnd"
-                             RadioButtonGroup.SelectedValue="{Binding StartOrEnd}">
-                        <Label Text="Pick Start or End or Other Important Date" 
+                    <StackLayout>
+                        <Label Text="Pick Start or End" 
                            FontAttributes="Bold" HorizontalOptions="Start"/>
                         <RadioButton Content="Start"
-                                 IsChecked="True"/>
-                        <RadioButton Content="End"/>
-                        <RadioButton Content="Other Important Date"/>
+                                 IsChecked="{Binding s}"/>
+                        <RadioButton Content="End"
+                                     IsChecked="{Binding e}"/>
                     </StackLayout>
                 </Frame>
                 <Label Text="Notification Date" FontAttributes="Bold" HorizontalOptions="Start"/>
