@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using JustinTownleyMobile.Models;
 using SQLite;
 using System.IO;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace JustinTownleyMobile.Services
 {

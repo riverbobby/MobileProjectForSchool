@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using JustinTownleyMobile.Models;
-using JustinTownleyMobile.ViewModels;
-using JustinTownleyMobile.Views;
 using JustinTownleyMobile.Services;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
 using Plugin.LocalNotification;
 
 namespace JustinTownleyMobile.ViewModels
